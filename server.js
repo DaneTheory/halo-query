@@ -121,7 +121,7 @@ exports.query = function (req, res) {
     client.send(info_message, 0, info_message.length, server_port, server_ip, function (e, b) {
         if (e) {
             Template.parseJson({
-                error: 'Error code ' + e
+                error: e
             });
             res.end();
         }

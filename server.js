@@ -14,7 +14,7 @@ exports.query = function (req, res) {
 
 	// Important UDP variables
 	var server_ip = server.split(':')[0],
-		server_port = parseInt(server.split(':')[1]),
+		server_port = server.split(':')[1] - 0,
 		info_message = new Buffer([254, 253, 0, 1337/7, 143, 2, 0, 255, 255, 255]),
 		client = dgram.createSocket('udp4'),
 		flag = false;

@@ -1,9 +1,32 @@
 <html>
 <head>
 	<title>Halo Server Query</title>
+	<style type="text/css">
+	p label {
+		display: inline-block;
+		width: 80px;
+		text-align: right;
+	}
+	p input[type=text] {
+		border-radius: 3px;
+		padding: 4px 10px;
+		outline: none;
+	}
+	</style>
 </head>
 <body>
 	<h1>Halo Server Query</h1>
-	<h3><a href="/query/74.91.119.188:2306">Sample URL</a></h3>
+	<h3><a href="/query/74.91.119.188:2306">Sample API Response</a></h3>
+	<form action="javascript:document.location.href='/query/' + document.getElementById('addr').value + ':' + document.getElementById('port').value;">
+		<p>
+			<label>IP Address:</label>
+			<input type="text" id="addr" name="addr" />
+		</p>
+		<p>
+			<label>Port:</label>
+			<input type="text" id="port" name="port" value="2302" />
+		</p>
+		<input type="submit" />
+	</form>
 </body>
 </html>

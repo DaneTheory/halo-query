@@ -15,12 +15,12 @@ exports.query = function (req, res) {
 	// Important UDP variables
 	var server_ip = server.split(':')[0],
 		server_port = server.split(':')[1] - 0,
-		info_message = new Buffer([254, 253, 0, 1337/7, 143, 2, 0, 255, 255, 255]),
+		info_message = new Buffer([254, 253, 0, 1337 / 7, 143, 2, 0, 255, 255, 255]),
 		client = dgram.createSocket('udp4'),
 		flag = false;
 
 	// Listeners
-	client.on('error', function(e){
+	client.on('error', function (e) {
 		Template.parseJson({
 			error: e
 		});
@@ -75,8 +75,10 @@ exports.query = function (req, res) {
 					type: 'Oddball',
 					randomStart: !! (data[33] >> 3 & 1),
 					speedWithBall: ['Slow', 'Normal', 'Fast'][data[33] >> 5 & 3],
-					traitWithBall: ['None', 'Invisible', 'Extra Damage', 'Damage Resistant'][data[33] >> 7 & 3],
-					traitWithoutBall: ['None', 'Invisible', 'Extra Damage', 'Damage Resistant'][data[33] >> 9 & 3],
+					traitWithBall: ['None', 'Invisible',
+											'Extra Damage', 'Damage Resistant'][data[33] >> 7 & 3],
+					traitWithoutBall: ['None', 'Invisible',
+											'Extra Damage', 'Damage Resistant'][data[33] >> 9 & 3],
 					ballType: ['Normal', 'Reverse Tag', 'Juggernaut'][data[33] >> 11 & 3],
 					ballSpawnCount: (data[33] >> 13 & 31) + 1
 				}, {
